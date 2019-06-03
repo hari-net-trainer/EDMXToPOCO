@@ -4,8 +4,324 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Provalley.DigiCo.API.Repositories.CentralDatabase.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CentralDigitalCondoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SP_DGC_ActivateCentralMobileUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="MobileIMEA" Type="varchar" Mode="In" />
+          <Parameter Name="TempPassword" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_ActivateCentralWebUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
+          <Parameter Name="TempPassword" Type="varchar" Mode="In" />
+          <Parameter Name="CurretPassword" Type="varchar" Mode="In" />
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_Central_SaveOTPDeliveryDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RecieverMobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="APIReferenceId" Type="varchar" Mode="In" />
+          <Parameter Name="SentBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_ChangeUserPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
+          <Parameter Name="OldPassword" Type="varchar" Mode="In" />
+          <Parameter Name="CurretPassword" Type="varchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_DeactivateCentralUserById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="DeActivatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_DeactivateSmsProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SmsProviderID" Type="int" Mode="In" />
+          <Parameter Name="Comment" Type="varchar" Mode="In" />
+          <Parameter Name="DeactivatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_DeleteAppDeviceDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AppAuthTokenId" Type="int" Mode="In" />
+          <Parameter Name="Comment" Type="varchar" Mode="In" />
+          <Parameter Name="DeactivatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_DeleteFcmConfigDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FcmConfigId" Type="int" Mode="In" />
+          <Parameter Name="Comment" Type="varchar" Mode="In" />
+          <Parameter Name="DeactivatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_DeleteRefreshToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientId" Type="varchar" Mode="In" />
+          <Parameter Name="Subject" Type="varchar" Mode="In" />
+          <Parameter Name="RefreshTokenId" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GenerateOTPForMobileNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="OTPCode" Type="bigint" Mode="InOut" />
+          <Parameter Name="SubscriptionCode" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GetActiveAPIConsumeClients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_DGC_GetActiveApplicationDevices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_DGC_GetActiveComapnies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_DGC_GetActiveIsoCurrencyCodes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_DGC_GetAllActiveSubscriptions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_DGC_GetAllAppDeviceDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="SortingColumn" Type="int" Mode="In" />
+          <Parameter Name="sortingDirection" Type="varchar" Mode="In" />
+          <Parameter Name="SearchingValue" Type="varchar" Mode="In" />
+          <Parameter Name="ActualTotalRecords" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GetAllComapanySubscriptionDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="SortingColumn" Type="int" Mode="In" />
+          <Parameter Name="sortingDirection" Type="varchar" Mode="In" />
+          <Parameter Name="SearchingValue" Type="varchar" Mode="In" />
+          <Parameter Name="ActualTotalRecords" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GetAllCondoDataBaseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="SortingColumn" Type="int" Mode="In" />
+          <Parameter Name="sortingDirection" Type="varchar" Mode="In" />
+          <Parameter Name="SearchingValue" Type="varchar" Mode="In" />
+          <Parameter Name="ActualTotalRecords" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GetAllFcmConfigDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="SortingColumn" Type="int" Mode="In" />
+          <Parameter Name="sortingDirection" Type="varchar" Mode="In" />
+          <Parameter Name="SearchingValue" Type="varchar" Mode="In" />
+          <Parameter Name="ActualTotalRecords" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GetAllSmsProviderDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="SortingColumn" Type="int" Mode="In" />
+          <Parameter Name="sortingDirection" Type="varchar" Mode="In" />
+          <Parameter Name="SearchingValue" Type="varchar" Mode="In" />
+          <Parameter Name="ActualTotalRecords" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GetAllTicketSystemDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TicketFromDate" Type="datetime" Mode="In" />
+          <Parameter Name="TicketToDate" Type="datetime" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="SortingColumn" Type="int" Mode="In" />
+          <Parameter Name="sortingDirection" Type="varchar" Mode="In" />
+          <Parameter Name="SearchingValue" Type="varchar" Mode="In" />
+          <Parameter Name="SubscriptionCode" Type="varchar" Mode="In" />
+          <Parameter Name="SubscriptionID" Type="bigint" Mode="In" />
+          <Parameter Name="ActualTotalRecords" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GetAPIRefreshTokenById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RefreshTokenId" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetAppDeviceDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AppAuthTokenId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetCentralConfigValuesByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConfigName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetCondoSubscriptionInvoiceConfigDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetConStringBySubscriptionCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetCurrencyDescByCurrencyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CurrencyId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetEmailTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TemplateName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetFcmConfigDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FcmConfigId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetInvoiceSchedulebySubscriptionid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubScriptionId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetPicDetailsBySubscriptionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetPropertyManagerDetailsBySubscriptionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="centraUserId" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GetRemsIntigrationDetailsBySubscriptionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetSmsProviderDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SmsProviderId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetSmsProviderDetailsBySubScriptionCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubScriptionCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetStatusChangeValuesByStatusFor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StatusFor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetSubscriptionBillConfigRates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetSubscriptionBillingConfigBySubId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetSubscriptionCurrentStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetSubscriptionStatusChangeValues" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_DGC_GetUnMappedCondoDataBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_DGC_GetUserFireBaseDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
+          <Parameter Name="ToFireBaseKey" Type="varchar" Mode="InOut" />
+          <Parameter Name="DeviceId" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_GetUserPasswordDetailsByCentralUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_GetUserSubscriptionDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_SaveAppDeviceDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AppAuthTokenId" Type="int" Mode="In" />
+          <Parameter Name="ApplicationName" Type="varchar" Mode="In" />
+          <Parameter Name="ApplicationCode" Type="varchar" Mode="In" />
+          <Parameter Name="AppToken" Type="varchar" Mode="In" />
+          <Parameter Name="Comment" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveCentralUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubScriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="UserMobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="UserPassword" Type="varchar" Mode="In" />
+          <Parameter Name="UserMobileIMEA" Type="varchar" Mode="In" />
+          <Parameter Name="IsActive" Type="varchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="CentralUserId" Type="bigint" Mode="InOut" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="IsNewUser" Type="varchar" Mode="InOut" />
+          <Parameter Name="CountryCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DGC_SaveComapnyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubScriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyRegistrationNo" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyAddress" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyPhoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyFaxNumber" Type="varchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="Errorcode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveComapnySubscriptionDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyRegistrationNo" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyPhoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyEmail" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyFaxNumber" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyAddress" Type="varchar" Mode="In" />
+          <Parameter Name="IsComapny" Type="varchar" Mode="In" />
+          <Parameter Name="ParentComapnyID" Type="bigint" Mode="In" />
+          <Parameter Name="IsIndividual" Type="varchar" Mode="In" />
+          <Parameter Name="PicPersonName" Type="varchar" Mode="In" />
+          <Parameter Name="PicMobilenumber" Type="varchar" Mode="In" />
+          <Parameter Name="PicEmail" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="TheManagerSubscriptionID" Type="bigint" Mode="In" />
+          <Parameter Name="TheManagerUserId" Type="int" Mode="In" />
+          <Parameter Name="SubscriptionCreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="TheMangerSubscriptionCode" Type="varchar" Mode="In" />
+          <Parameter Name="Errorcode" Type="int" Mode="InOut" />
+          <Parameter Name="CurrentSubscriptionID" Type="bigint" Mode="InOut" />
+          <Parameter Name="CurrentSubscriptionCode" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveCondoDataBaseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DataBaseId" Type="int" Mode="In" />
+          <Parameter Name="ServerName" Type="varchar" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="DbPassword" Type="varchar" Mode="In" />
+          <Parameter Name="Initialcatalog" Type="varchar" Mode="In" />
+          <Parameter Name="EffectiveFrom" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveCondoSubscriptionBillRates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionBillId" Type="int" Mode="In" />
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="RateCalculationId" Type="int" Mode="In" />
+          <Parameter Name="SlabRateXml" Type="xml" Mode="In" />
+          <Parameter Name="EffectiveFrom" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveCondoSubscriptionInvoiceConfiguration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceConfigId" Type="int" Mode="In" />
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="LateFee" Type="real" Mode="In" />
+          <Parameter Name="IntrestFreeDays" Type="int" Mode="In" />
+          <Parameter Name="RateOfIntrestPerMonth" Type="real" Mode="In" />
+          <Parameter Name="EffectiveFrom" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveCondoSubscriptionRemsIntigrationDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RemsIntigrationId" Type="int" Mode="In" />
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="RemsSubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="RemsFrontEndUrl" Type="varchar" Mode="In" />
+          <Parameter Name="RemsBackEndUrl" Type="varchar" Mode="In" />
+          <Parameter Name="AndroidApplicationName" Type="varchar" Mode="In" />
+          <Parameter Name="IosApplicationName" Type="varchar" Mode="In" />
+          <Parameter Name="IsIntigrationEnable" Type="varchar" Mode="In" />
+          <Parameter Name="AppLogoPath" Type="varchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveFCMConfigDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FcmConfigId" Type="int" Mode="In" />
+          <Parameter Name="FCMApiUrl" Type="varchar" Mode="In" />
+          <Parameter Name="FCMLegacyKey" Type="varchar" Mode="In" />
+          <Parameter Name="AppDeviceId" Type="int" Mode="In" />
+          <Parameter Name="Comment" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveForgetPasswordRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserMobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="RequestSubmittedOn" Type="datetime" Mode="In" />
+          <Parameter Name="RequestParam" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="CentralUserId" Type="bigint" Mode="InOut" />
+          <Parameter Name="SubscriptionCode" Type="varchar" Mode="InOut" />
+          <Parameter Name="RequestOTP" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveInitailaManagerSubscriptionUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubScriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveInvoiceSchedule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceScheduleID" Type="int" Mode="In" />
+          <Parameter Name="SubScriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="TypeOfBill" Type="int" Mode="In" />
+          <Parameter Name="RecurringPeriod" Type="int" Mode="In" />
+          <Parameter Name="ScheduleDayOfMonth" Type="int" Mode="In" />
+          <Parameter Name="ScheduleTime" Type="varchar" Mode="In" />
+          <Parameter Name="createdBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="SP_DGC_SavePasswordDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
           <Parameter Name="NewPassword" Type="varchar" Mode="In" />
@@ -13,14 +329,141 @@
           <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
           <Parameter Name="Errorcode" Type="int" Mode="InOut" />
         </Function>
-        <EntityContainer Name="ProvalleyDigiCoAPIRepositoriesCentralDatabaseStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+        <Function Name="SP_DGC_SaveRefreshTokenDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientId" Type="varchar" Mode="In" />
+          <Parameter Name="RefreshTokenId" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Subject" Type="varchar" Mode="In" />
+          <Parameter Name="IssuedUtc" Type="datetime" Mode="In" />
+          <Parameter Name="ExpiresUtc" Type="datetime" Mode="In" />
+          <Parameter Name="ProtectedTicket" Type="varchar(max)" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveResetpasswordRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ChangePassword" Type="varchar" Mode="In" />
+          <Parameter Name="RequestParam" Type="varchar" Mode="In" />
+          <Parameter Name="RequestOTP" Type="varchar" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="CentralUserId" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveSmsProviderDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SmsProviderID" Type="int" Mode="In" />
+          <Parameter Name="SubScriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="SmsProviderName" Type="varchar" Mode="In" />
+          <Parameter Name="ProviderContactNumber" Type="varchar" Mode="In" />
+          <Parameter Name="ProviderEmailID" Type="varchar" Mode="In" />
+          <Parameter Name="GetwayCharges" Type="decimal" Mode="In" />
+          <Parameter Name="ParamsXml" Type="xml" Mode="In" />
+          <Parameter Name="BaseUrl" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveStatusChangeHistoryDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="StatusComment" Type="varchar" Mode="In" />
+          <Parameter Name="ActionTakenBy" Type="varchar" Mode="In" />
+          <Parameter Name="PaidAmount" Type="decimal" Mode="In" />
+          <Parameter Name="PaymentReceivedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ModeofPayment" Type="varchar" Mode="In" />
+          <Parameter Name="BankName" Type="varchar" Mode="In" />
+          <Parameter Name="ChequeNumber" Type="varchar" Mode="In" />
+          <Parameter Name="OnlineReferenceNumber" Type="varchar" Mode="In" />
+          <Parameter Name="DataBaseId" Type="int" Mode="In" />
+          <Parameter Name="Createdby" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveSubscriptionBillingConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubBillingID" Type="bigint" Mode="In" />
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="ContactPersonName" Type="varchar" Mode="In" />
+          <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="BillingAddress" Type="varchar" Mode="In" />
+          <Parameter Name="BillingCurrencyId" Type="int" Mode="In" />
+          <Parameter Name="CurrencyDesc" Type="varchar" Mode="In" />
+          <Parameter Name="BillingPeriodFrom" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="Errorcode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveSubscriptionPicDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="PicName" Type="varchar" Mode="In" />
+          <Parameter Name="PicMobilenumber" Type="varchar" Mode="In" />
+          <Parameter Name="PicEmail" Type="varchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveTheManagerResposeDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubscriptionID" Type="bigint" Mode="In" />
+          <Parameter Name="TheManagerSubscriptionID" Type="bigint" Mode="In" />
+          <Parameter Name="TheMangerSubscriptionCode" Type="varchar" Mode="In" />
+          <Parameter Name="ResponseStatus" Type="varchar" Mode="In" />
+          <Parameter Name="Errorcode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveTicketSystemActionDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TicketId" Type="int" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="Comment" Type="varchar" Mode="In" />
+          <Parameter Name="ActionTakenBy" Type="varchar" Mode="In" />
+          <Parameter Name="ActionTakenByUserid" Type="bigint" Mode="In" />
+          <Parameter Name="AssignToUserEMails" Type="varchar" Mode="In" />
+          <Parameter Name="PreviousStatusID" Type="int" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveTicketSystemDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TicketId" Type="int" Mode="In" />
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="In" />
+          <Parameter Name="SubscriptionCode" Type="varchar" Mode="In" />
+          <Parameter Name="TicketSubject" Type="varchar" Mode="In" />
+          <Parameter Name="TicketDescription" Type="varchar" Mode="In" />
+          <Parameter Name="TicketImagePath" Type="varchar" Mode="In" />
+          <Parameter Name="RaisedBy" Type="varchar" Mode="In" />
+          <Parameter Name="RaisedByUserid" Type="bigint" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveUserFireBaseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
+          <Parameter Name="ToFireBaseKey" Type="varchar" Mode="In" />
+          <Parameter Name="DeviceId" Type="varchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_SaveUserFireBaseToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CentralUserId" Type="bigint" Mode="In" />
+          <Parameter Name="UserFireBaseKey" Type="varchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_ValidateCentralUserAuthToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserAuthToken" Type="varchar" Mode="In" />
+          <Parameter Name="AppCode" Type="varchar" Mode="In" />
+          <Parameter Name="CentralUserId" Type="varchar" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_ValidateCentralUserCredentials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserMobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="UserPassword" Type="varchar" Mode="In" />
+          <Parameter Name="CentralUserId" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="SP_DGC_ValidateUser_GetUserSubScriptionDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserMobileNumber" Type="varchar" Mode="In" />
+          <Parameter Name="UserPassword" Type="varchar" Mode="In" />
+          <Parameter Name="GoogleFireBaseToken" Type="varchar" Mode="In" />
+          <Parameter Name="UserAccessDevice" Type="varchar" Mode="In" />
+          <Parameter Name="IsWebCalling" Type="varchar" Mode="In" />
+          <Parameter Name="CentralUserId" Type="bigint" Mode="InOut" />
+          <Parameter Name="SubscriptionId" Type="bigint" Mode="InOut" />
+          <Parameter Name="SubscriptionCode" Type="varchar" Mode="InOut" />
+          <Parameter Name="UserAuthToken" Type="varchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="CentralDigitalCondoModelStoreContainer" />
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Provalley.DigiCo.API.Repositories.CentralDatabase" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CentralDigitalCondoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CentralDigitalCondoEntities" annotation:LazyLoadingEnabled="true" >
-          <FunctionImport Name="SP_DGC_GetAllActiveSubscriptions" ReturnType="Collection(Provalley.DigiCo.API.Repositories.CentralDatabase.SP_DGC_GetAllActiveSubscriptions_Result)" />
           <FunctionImport Name="SP_DGC_SavePasswordDetails">
             <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
             <Parameter Name="NewPassword" Mode="In" Type="String" />
@@ -28,9 +471,730 @@
             <Parameter Name="UpdatedBy" Mode="In" Type="String" />
             <Parameter Name="Errorcode" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_DGC_ValidateCentralUserCredentials">
+            <Parameter Name="UserMobileNumber" Mode="In" Type="String" />
+            <Parameter Name="UserPassword" Mode="In" Type="String" />
+            <Parameter Name="CentralUserId" Mode="InOut" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_DeactivateCentralUserById">
+            <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
+            <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="DeActivatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetUserSubscriptionDetails" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetUserSubscriptionDetails_Result)">
+          <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_ChangeUserPassword">
+            <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
+            <Parameter Name="OldPassword" Mode="In" Type="String" />
+            <Parameter Name="CurretPassword" Mode="In" Type="String" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetEmailTemplate" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetEmailTemplate_Result)">
+          <Parameter Name="TemplateName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_ActivateCentralWebUser">
+            <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
+            <Parameter Name="TempPassword" Mode="In" Type="String" />
+            <Parameter Name="CurretPassword" Mode="In" Type="String" />
+            <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_ActivateCentralMobileUser">
+            <Parameter Name="MobileNumber" Mode="In" Type="String" />
+            <Parameter Name="MobileIMEA" Mode="In" Type="String" />
+            <Parameter Name="TempPassword" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_Central_SaveOTPDeliveryDetails">
+            <Parameter Name="RecieverMobileNumber" Mode="In" Type="String" />
+            <Parameter Name="APIReferenceId" Mode="In" Type="String" />
+            <Parameter Name="SentBy" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_DeleteRefreshToken">
+            <Parameter Name="ClientId" Mode="In" Type="String" />
+            <Parameter Name="Subject" Mode="In" Type="String" />
+            <Parameter Name="RefreshTokenId" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetActiveAPIConsumeClients" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetActiveAPIConsumeClients_Result)" />
+          <FunctionImport Name="SP_DGC_GetAPIRefreshTokenById" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetAPIRefreshTokenById_Result)">
+          <Parameter Name="RefreshTokenId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetUserFireBaseDetailsById">
+            <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
+            <Parameter Name="ToFireBaseKey" Mode="InOut" Type="String" />
+            <Parameter Name="DeviceId" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveRefreshTokenDetails">
+            <Parameter Name="ClientId" Mode="In" Type="String" />
+            <Parameter Name="RefreshTokenId" Mode="In" Type="String" />
+            <Parameter Name="Subject" Mode="In" Type="String" />
+            <Parameter Name="IssuedUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="ExpiresUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="ProtectedTicket" Mode="In" Type="String" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveUserFireBaseDetails">
+            <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
+            <Parameter Name="ToFireBaseKey" Mode="In" Type="String" />
+            <Parameter Name="DeviceId" Mode="In" Type="String" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveUserFireBaseToken">
+            <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
+            <Parameter Name="UserFireBaseKey" Mode="In" Type="String" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveSubscriptionBillDetails">
+            <Parameter Name="SubscriptionBillId" Mode="In" Type="Int32" />
+            <Parameter Name="BillLevelType" Mode="In" Type="Int32" />
+            <Parameter Name="SlabRateAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="EffectiveFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveComapnyDetails">
+            <Parameter Name="SubScriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="CompanyRegistrationNo" Mode="In" Type="String" />
+            <Parameter Name="CompanyAddress" Mode="In" Type="String" />
+            <Parameter Name="CompanyPhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="CompanyFaxNumber" Mode="In" Type="String" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="Errorcode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_ValidateCentralUserAuthToken">
+            <Parameter Name="UserAuthToken" Mode="In" Type="String" />
+            <Parameter Name="AppCode" Mode="In" Type="String" />
+            <Parameter Name="CentralUserId" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetCondoSubscriptionInvoiceConfigDetails" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetCondoSubscriptionInvoiceConfigDetails_Result)">
+          <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveCondoSubscriptionInvoiceConfiguration">
+            <Parameter Name="InvoiceConfigId" Mode="In" Type="Int32" />
+            <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="LateFee" Mode="In" Type="Single" />
+            <Parameter Name="IntrestFreeDays" Mode="In" Type="Int32" />
+            <Parameter Name="RateOfIntrestPerMonth" Mode="In" Type="Single" />
+            <Parameter Name="EffectiveFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetActiveComapnies" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetActiveComapnies_Result)" />
+          <FunctionImport Name="SP_DGC_GetActiveIsoCurrencyCodes" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetActiveIsoCurrencyCodes_Result)" />
+          <FunctionImport Name="SP_DGC_SaveSubscriptionBillingConfig">
+            <Parameter Name="SubBillingID" Mode="In" Type="Int64" />
+            <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="ContactPersonName" Mode="In" Type="String" />
+            <Parameter Name="MobileNumber" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="BillingAddress" Mode="In" Type="String" />
+            <Parameter Name="BillingCurrencyId" Mode="In" Type="Int32" />
+            <Parameter Name="CurrencyDesc" Mode="In" Type="String" />
+            <Parameter Name="BillingPeriodFrom" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="Errorcode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetPicDetailsBySubscriptionId" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetPicDetailsBySubscriptionId_Result)">
+          <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveSubscriptionPicDetails">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="PicName" Mode="In" Type="String" />
+            <Parameter Name="PicMobilenumber" Mode="In" Type="String" />
+            <Parameter Name="PicEmail" Mode="In" Type="String" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetSubscriptionStatusChangeValues" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetSubscriptionStatusChangeValues_Result)" />
+          <FunctionImport Name="SP_DGC_GetSubscriptionCurrentStatus" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetSubscriptionCurrentStatus_Result)">
+          <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetConStringBySubscriptionCode" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetConStringBySubscriptionCode_Result)">
+          <Parameter Name="SubscriptionCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetAllComapanySubscriptionDetails" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetAllComapanySubscriptionDetails_Result)">
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="SortingColumn" Mode="In" Type="Int32" />
+            <Parameter Name="sortingDirection" Mode="In" Type="String" />
+            <Parameter Name="SearchingValue" Mode="In" Type="String" />
+            <Parameter Name="ActualTotalRecords" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveComapnySubscriptionDetails">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="CompanyRegistrationNo" Mode="In" Type="String" />
+            <Parameter Name="CompanyPhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="CompanyEmail" Mode="In" Type="String" />
+            <Parameter Name="CompanyFaxNumber" Mode="In" Type="String" />
+            <Parameter Name="CompanyAddress" Mode="In" Type="String" />
+            <Parameter Name="IsComapny" Mode="In" Type="String" />
+            <Parameter Name="ParentComapnyID" Mode="In" Type="Int64" />
+            <Parameter Name="IsIndividual" Mode="In" Type="String" />
+            <Parameter Name="PicPersonName" Mode="In" Type="String" />
+            <Parameter Name="PicMobilenumber" Mode="In" Type="String" />
+            <Parameter Name="PicEmail" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="TheManagerSubscriptionID" Mode="In" Type="Int64" />
+            <Parameter Name="TheManagerUserId" Mode="In" Type="Int32" />
+            <Parameter Name="SubscriptionCreatedBy" Mode="In" Type="String" />
+            <Parameter Name="TheMangerSubscriptionCode" Mode="In" Type="String" />
+            <Parameter Name="Errorcode" Mode="InOut" Type="Int32" />
+            <Parameter Name="CurrentSubscriptionID" Mode="InOut" Type="Int64" />
+            <Parameter Name="CurrentSubscriptionCode" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveTheManagerResposeDetails">
+            <Parameter Name="SubscriptionID" Mode="In" Type="Int64" />
+            <Parameter Name="TheManagerSubscriptionID" Mode="In" Type="Int64" />
+            <Parameter Name="TheMangerSubscriptionCode" Mode="In" Type="String" />
+            <Parameter Name="ResponseStatus" Mode="In" Type="String" />
+            <Parameter Name="Errorcode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_ValidateUser_GetUserSubScriptionDetails">
+            <Parameter Name="UserMobileNumber" Mode="In" Type="String" />
+            <Parameter Name="UserPassword" Mode="In" Type="String" />
+            <Parameter Name="GoogleFireBaseToken" Mode="In" Type="String" />
+            <Parameter Name="UserAccessDevice" Mode="In" Type="String" />
+            <Parameter Name="IsWebCalling" Mode="In" Type="String" />
+            <Parameter Name="CentralUserId" Mode="InOut" Type="Int64" />
+            <Parameter Name="SubscriptionId" Mode="InOut" Type="Int64" />
+            <Parameter Name="SubscriptionCode" Mode="InOut" Type="String" />
+            <Parameter Name="UserAuthToken" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetCurrencyDescByCurrencyId" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetCurrencyDescByCurrencyId_Result)">
+          <Parameter Name="CurrencyId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetSubscriptionBillingConfigBySubId" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetSubscriptionBillingConfigBySubId_Result)">
+          <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveTicketSystemActionDetails">
+            <Parameter Name="TicketId" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="ActionTakenBy" Mode="In" Type="String" />
+            <Parameter Name="ActionTakenByUserid" Mode="In" Type="Int64" />
+            <Parameter Name="AssignToUserEMails" Mode="In" Type="String" />
+            <Parameter Name="PreviousStatusID" Mode="In" Type="Int32" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveTicketSystemDetails">
+            <Parameter Name="TicketId" Mode="In" Type="Int32" />
+            <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="SubscriptionCode" Mode="In" Type="String" />
+            <Parameter Name="TicketSubject" Mode="In" Type="String" />
+            <Parameter Name="TicketDescription" Mode="In" Type="String" />
+            <Parameter Name="TicketImagePath" Mode="In" Type="String" />
+            <Parameter Name="RaisedBy" Mode="In" Type="String" />
+            <Parameter Name="RaisedByUserid" Mode="In" Type="Int64" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_DeactivateSmsProvider">
+            <Parameter Name="SmsProviderID" Mode="In" Type="Int32" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="DeactivatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_DeleteAppDeviceDetails">
+            <Parameter Name="AppAuthTokenId" Mode="In" Type="Int32" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="DeactivatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_DeleteFcmConfigDetails">
+            <Parameter Name="FcmConfigId" Mode="In" Type="Int32" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="DeactivatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveAppDeviceDetails">
+            <Parameter Name="AppAuthTokenId" Mode="In" Type="Int32" />
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="ApplicationCode" Mode="In" Type="String" />
+            <Parameter Name="AppToken" Mode="In" Type="String" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveFCMConfigDetails">
+            <Parameter Name="FcmConfigId" Mode="In" Type="Int32" />
+            <Parameter Name="FCMApiUrl" Mode="In" Type="String" />
+            <Parameter Name="FCMLegacyKey" Mode="In" Type="String" />
+            <Parameter Name="AppDeviceId" Mode="In" Type="Int32" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetAllSmsProviderDetails" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetAllSmsProviderDetails_Result)">
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="SortingColumn" Mode="In" Type="Int32" />
+            <Parameter Name="sortingDirection" Mode="In" Type="String" />
+            <Parameter Name="SearchingValue" Mode="In" Type="String" />
+            <Parameter Name="ActualTotalRecords" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetAllFcmConfigDetails" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetAllFcmConfigDetails_Result)">
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="SortingColumn" Mode="In" Type="Int32" />
+            <Parameter Name="sortingDirection" Mode="In" Type="String" />
+            <Parameter Name="SearchingValue" Mode="In" Type="String" />
+            <Parameter Name="ActualTotalRecords" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetAppDeviceDetailsById" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetAppDeviceDetailsById_Result)">
+          <Parameter Name="AppAuthTokenId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetFcmConfigDetailsById" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetFcmConfigDetailsById_Result)">
+          <Parameter Name="FcmConfigId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetStatusChangeValuesByStatusFor" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetStatusChangeValuesByStatusFor_Result)">
+          <Parameter Name="StatusFor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetAllAppDeviceDetails" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetAllAppDeviceDetails_Result)">
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="SortingColumn" Mode="In" Type="Int32" />
+            <Parameter Name="sortingDirection" Mode="In" Type="String" />
+            <Parameter Name="SearchingValue" Mode="In" Type="String" />
+            <Parameter Name="ActualTotalRecords" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetActiveApplicationDevices" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetActiveApplicationDevices_Result)" />
+          <FunctionImport Name="SP_DGC_GetSmsProviderDetailsById" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetSmsProviderDetailsById_Result)">
+          <Parameter Name="SmsProviderId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveSmsProviderDetails">
+            <Parameter Name="SmsProviderID" Mode="In" Type="Int32" />
+            <Parameter Name="SubScriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="SmsProviderName" Mode="In" Type="String" />
+            <Parameter Name="ProviderContactNumber" Mode="In" Type="String" />
+            <Parameter Name="ProviderEmailID" Mode="In" Type="String" />
+            <Parameter Name="GetwayCharges" Mode="In" Type="Decimal" />
+            <Parameter Name="ParamsXml" Mode="In" Type="String" />
+            <Parameter Name="BaseUrl" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetSmsProviderDetailsBySubScriptionCode" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetSmsProviderDetailsBySubScriptionCode_Result)">
+          <Parameter Name="SubScriptionCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetSubscriptionBillConfigRates" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetSubscriptionBillConfigRates_Result)">
+          <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveCondoSubscriptionBillRates">
+            <Parameter Name="SubscriptionBillId" Mode="In" Type="Int32" />
+            <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="RateCalculationId" Mode="In" Type="Int32" />
+            <Parameter Name="SlabRateXml" Mode="In" Type="String" />
+            <Parameter Name="EffectiveFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GenerateOTPForMobileNumber">
+            <Parameter Name="MobileNumber" Mode="In" Type="String" />
+            <Parameter Name="OTPCode" Mode="InOut" Type="Int64" />
+            <Parameter Name="SubscriptionCode" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetAllActiveSubscriptions" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetAllActiveSubscriptions_Result)" />
+          <FunctionImport Name="SP_DGC_GetInvoiceSchedulebySubscriptionid" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetInvoiceSchedulebySubscriptionid_Result)">
+          <Parameter Name="SubScriptionId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveInvoiceSchedule">
+            <Parameter Name="InvoiceScheduleID" Mode="In" Type="Int32" />
+            <Parameter Name="SubScriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="TypeOfBill" Mode="In" Type="Int32" />
+            <Parameter Name="RecurringPeriod" Mode="In" Type="Int32" />
+            <Parameter Name="ScheduleDayOfMonth" Mode="In" Type="Int32" />
+            <Parameter Name="ScheduleTime" Mode="In" Type="String" />
+            <Parameter Name="createdBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetCentralConfigValuesByName" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetCentralConfigValuesByName_Result)">
+          <Parameter Name="ConfigName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveForgetPasswordRequest">
+            <Parameter Name="UserMobileNumber" Mode="In" Type="String" />
+            <Parameter Name="RequestSubmittedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="RequestParam" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+            <Parameter Name="CentralUserId" Mode="InOut" Type="Int64" />
+            <Parameter Name="SubscriptionCode" Mode="InOut" Type="String" />
+            <Parameter Name="RequestOTP" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveResetpasswordRequest">
+            <Parameter Name="ChangePassword" Mode="In" Type="String" />
+            <Parameter Name="RequestParam" Mode="In" Type="String" />
+            <Parameter Name="RequestOTP" Mode="In" Type="String" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+            <Parameter Name="CentralUserId" Mode="InOut" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveCentralUserDetails">
+            <Parameter Name="SubScriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="UserMobileNumber" Mode="In" Type="String" />
+            <Parameter Name="UserPassword" Mode="In" Type="String" />
+            <Parameter Name="UserMobileIMEA" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="String" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="CentralUserId" Mode="InOut" Type="Int64" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+            <Parameter Name="IsNewUser" Mode="InOut" Type="String" />
+            <Parameter Name="CountryCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetAllCondoDataBaseDetails" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetAllCondoDataBaseDetails_Result)">
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="SortingColumn" Mode="In" Type="Int32" />
+            <Parameter Name="sortingDirection" Mode="In" Type="String" />
+            <Parameter Name="SearchingValue" Mode="In" Type="String" />
+            <Parameter Name="ActualTotalRecords" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveCondoDataBaseDetails">
+            <Parameter Name="DataBaseId" Mode="In" Type="Int32" />
+            <Parameter Name="ServerName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="DbPassword" Mode="In" Type="String" />
+            <Parameter Name="Initialcatalog" Mode="In" Type="String" />
+            <Parameter Name="EffectiveFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetUnMappedCondoDataBase" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetUnMappedCondoDataBase_Result)" />
+          <FunctionImport Name="SP_DGC_SaveStatusChangeHistoryDetails">
+            <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="StatusComment" Mode="In" Type="String" />
+            <Parameter Name="ActionTakenBy" Mode="In" Type="String" />
+            <Parameter Name="PaidAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="PaymentReceivedBy" Mode="In" Type="String" />
+            <Parameter Name="ModeofPayment" Mode="In" Type="String" />
+            <Parameter Name="BankName" Mode="In" Type="String" />
+            <Parameter Name="ChequeNumber" Mode="In" Type="String" />
+            <Parameter Name="OnlineReferenceNumber" Mode="In" Type="String" />
+            <Parameter Name="DataBaseId" Mode="In" Type="Int32" />
+            <Parameter Name="Createdby" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetRemsIntigrationDetailsBySubscriptionId" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetRemsIntigrationDetailsBySubscriptionId_Result)">
+          <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveCondoSubscriptionRemsIntigrationDetails">
+            <Parameter Name="RemsIntigrationId" Mode="In" Type="Int32" />
+            <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="RemsSubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="RemsFrontEndUrl" Mode="In" Type="String" />
+            <Parameter Name="RemsBackEndUrl" Mode="In" Type="String" />
+            <Parameter Name="AndroidApplicationName" Mode="In" Type="String" />
+            <Parameter Name="IosApplicationName" Mode="In" Type="String" />
+            <Parameter Name="IsIntigrationEnable" Mode="In" Type="String" />
+            <Parameter Name="AppLogoPath" Mode="In" Type="String" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_SaveInitailaManagerSubscriptionUserDetails">
+            <Parameter Name="SubScriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetPropertyManagerDetailsBySubscriptionId">
+            <Parameter Name="SubscriptionId" Mode="In" Type="Int64" />
+            <Parameter Name="centraUserId" Mode="InOut" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetUserPasswordDetailsByCentralUserId" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetUserPasswordDetailsByCentralUserId_Result)">
+          <Parameter Name="CentralUserId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DGC_GetAllTicketSystemDetails" ReturnType="Collection(CentralDigitalCondoModel.SP_DGC_GetAllTicketSystemDetails_Result)">
+            <Parameter Name="TicketFromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TicketToDate" Mode="In" Type="DateTime" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="SortingColumn" Mode="In" Type="Int32" />
+            <Parameter Name="sortingDirection" Mode="In" Type="String" />
+            <Parameter Name="SearchingValue" Mode="In" Type="String" />
+            <Parameter Name="SubscriptionCode" Mode="In" Type="String" />
+            <Parameter Name="SubscriptionID" Mode="In" Type="Int64" />
+            <Parameter Name="ActualTotalRecords" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="SP_DGC_GetUserSubscriptionDetails_Result">
+          <Property Type="Int64" Name="CentralUserId" Nullable="false" />
+          <Property Type="String" Name="UserMobileNumber" Nullable="true" MaxLength="20" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="false" />
+          <Property Type="String" Name="SubscriptionCode" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="IsIndividual" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="COMPANYNAME" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="CompanyPICName" Nullable="true" MaxLength="2000" />
+          <Property Type="DateTime" Name="UserSubscriptionPeriodFrom" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="UserSubscriptionPeriodTo" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="CondoSubScriptionPeriodFrom" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="CondoSubScriptionPeriodTo" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetEmailTemplate_Result">
+          <Property Type="Int32" Name="EmailTemplateId" Nullable="false" />
+          <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="TemplateSubject" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="TemplateBody" Nullable="false" />
+          <Property Type="String" Name="TemplateStyle" Nullable="false" MaxLength="8000" />
+          <Property Type="String" Name="ReplaceWords" Nullable="true" MaxLength="8000" />
+          <Property Type="Boolean" Name="isHtmlTemplate" Nullable="true" />
+          <Property Type="Boolean" Name="IsProdEnv" Nullable="true" />
+          <Property Type="String" Name="DevloperToList" Nullable="true" MaxLength="1500" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetActiveAPIConsumeClients_Result">
+          <Property Type="Int64" Name="APIConsumeId" Nullable="false" />
+          <Property Type="String" Name="ClientId" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="ClientSecret" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="ApplicationType" Nullable="true" />
+          <Property Type="Int32" Name="RefreshTokenLifeTime" Nullable="true" />
+          <Property Type="String" Name="AllowedOrigin" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetAPIRefreshTokenById_Result">
+          <Property Type="Int64" Name="APIConsumeId" Nullable="true" />
+          <Property Type="String" Name="RefreshTokenId" Nullable="true" />
+          <Property Type="String" Name="Subject" Nullable="true" MaxLength="2000" />
+          <Property Type="DateTime" Name="IssuedUtc" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ExpiresUtc" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ProtectedTicket" Nullable="true" />
+          <Property Type="String" Name="ClientId" Nullable="true" MaxLength="2000" />
+          <Property Type="Int32" Name="IsExpired" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetCondoSubscriptionInvoiceConfigDetails_Result">
+          <Property Type="Int32" Name="InvoiceConfigId" Nullable="false" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="true" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="5000" />
+          <Property Type="Single" Name="LateFee" Nullable="true" />
+          <Property Type="Int32" Name="IntrestFreeDays" Nullable="true" />
+          <Property Type="Decimal" Name="RateOfIntrestPerMonth" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetActiveComapnies_Result">
+          <Property Type="Int64" Name="CompanyId" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="5000" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetActiveIsoCurrencyCodes_Result">
+          <Property Type="Int32" Name="CurrencyId" Nullable="false" />
+          <Property Type="String" Name="CurrencyCode" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetPicDetailsBySubscriptionId_Result">
+          <Property Type="Int64" Name="PersonId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="2000" />
+          <Property Type="Int64" Name="CompanyId" Nullable="true" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetSubscriptionStatusChangeValues_Result">
+          <Property Type="Int32" Name="Statusid" Nullable="false" />
+          <Property Type="String" Name="statusvalue" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetSubscriptionCurrentStatus_Result">
+          <Property Type="Int64" Name="SubscriptionId" Nullable="false" />
+          <Property Type="Int32" Name="CurrentStatusId" Nullable="true" />
+          <Property Type="String" Name="CurrentStatus" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetConStringBySubscriptionCode_Result">
+          <Property Type="Int32" Name="ConnectionID" Nullable="false" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="true" />
+          <Property Type="String" Name="SubscriptionCode" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="ServerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DbPassword" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Datasource" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Initialcatalog" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetAllComapanySubscriptionDetails_Result">
+          <Property Type="Int64" Name="CompanyId" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="IsIndividual" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="IsCompany" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="1" />
+          <Property Type="Int64" Name="PersonId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="20" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="false" />
+          <Property Type="Int32" Name="PackageId" Nullable="true" />
+          <Property Type="DateTime" Name="ActualActivatedOn" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SubscriptionCode" Nullable="true" MaxLength="12" />
+          <Property Type="Int64" Name="ParentComapanyid" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetCurrencyDescByCurrencyId_Result">
+          <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CurrencyDesc" Nullable="true" MaxLength="1000" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetSubscriptionBillingConfigBySubId_Result">
+          <Property Type="Int64" Name="SubBillingID" Nullable="false" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="false" />
+          <Property Type="String" Name="ContactPersonName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BillingAddress" Nullable="true" MaxLength="5000" />
+          <Property Type="Int32" Name="BillingCurrencyId" Nullable="false" />
+          <Property Type="String" Name="CurrencyDesc" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="BillingPeriodFrom" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetAllSmsProviderDetails_Result">
+          <Property Type="Int32" Name="SmsProviderID" Nullable="false" />
+          <Property Type="Int64" Name="SubScriptionId" Nullable="true" />
+          <Property Type="String" Name="SmsProviderName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ProviderContactNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ProviderEmailID" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="GetwayCharges" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="ParamName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ParamValue" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="IsReplace" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="TypeOfReplace" Nullable="true" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="5000" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetAllFcmConfigDetails_Result">
+          <Property Type="Int32" Name="FcmConfigId" Nullable="false" />
+          <Property Type="Int32" Name="AppDeviceId" Nullable="true" />
+          <Property Type="String" Name="FCMApiUrl" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="FCMLegacyKey" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="DeleteComment" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ApplicationName" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetAppDeviceDetailsById_Result">
+          <Property Type="Int32" Name="AppAuthTokenId" Nullable="false" />
+          <Property Type="String" Name="ApplicationName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ApplicationCode" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AppToken" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="5000" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetFcmConfigDetailsById_Result">
+          <Property Type="Int32" Name="FcmConfigId" Nullable="false" />
+          <Property Type="Int32" Name="AppDeviceId" Nullable="true" />
+          <Property Type="String" Name="FCMApiUrl" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="FCMLegacyKey" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="5000" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetStatusChangeValuesByStatusFor_Result">
+          <Property Type="Int32" Name="Statusid" Nullable="false" />
+          <Property Type="String" Name="statusvalue" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetAllAppDeviceDetails_Result">
+          <Property Type="Int32" Name="AppAuthTokenId" Nullable="false" />
+          <Property Type="String" Name="ApplicationName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ApplicationCode" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AppToken" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="DeleteComment" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetActiveApplicationDevices_Result">
+          <Property Type="Int32" Name="AppAuthTokenId" Nullable="false" />
+          <Property Type="String" Name="ApplicationName" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetSmsProviderDetailsById_Result">
+          <Property Type="Int32" Name="SmsProviderID" Nullable="false" />
+          <Property Type="Int64" Name="SubScriptionId" Nullable="true" />
+          <Property Type="String" Name="SmsProviderName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ProviderContactNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ProviderEmailID" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="GetwayCharges" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Params" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="SmsBaseURl" Nullable="true" MaxLength="600" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetSmsProviderDetailsBySubScriptionCode_Result">
+          <Property Type="Int32" Name="SmsProviderID" Nullable="false" />
+          <Property Type="Int64" Name="SubScriptionId" Nullable="true" />
+          <Property Type="String" Name="SmsProviderName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ProviderContactNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ProviderEmailID" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="GetwayCharges" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Params" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="SmsBaseURl" Nullable="true" MaxLength="600" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetSubscriptionBillConfigRates_Result">
+          <Property Type="Int32" Name="SubscriptionBillId" Nullable="false" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="true" />
+          <Property Type="Int32" Name="RateCalculationId" Nullable="true" />
+          <Property Type="String" Name="SlabRateAmount" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+        </ComplexType>
         <ComplexType Name="SP_DGC_GetAllActiveSubscriptions_Result">
           <Property Type="Int64" Name="SubscriptionId" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="5000" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetInvoiceSchedulebySubscriptionid_Result">
+          <Property Type="Int32" Name="InvoiceScheduleID" Nullable="false" />
+          <Property Type="Int64" Name="SubScriptionId" Nullable="true" />
+          <Property Type="Int32" Name="TypeOfBill" Nullable="true" />
+          <Property Type="Int32" Name="RecurringPeriod" Nullable="true" />
+          <Property Type="Int32" Name="ScheduleDayOfMonth" Nullable="true" />
+          <Property Type="String" Name="ScheduleTime" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetCentralConfigValuesByName_Result">
+          <Property Type="Int32" Name="ConfigurationKey" Nullable="true" />
+          <Property Type="String" Name="ConfigurationValue" Nullable="true" MaxLength="5000" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetAllCondoDataBaseDetails_Result">
+          <Property Type="Int32" Name="DataBaseId" Nullable="false" />
+          <Property Type="String" Name="ServerName" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="DbPassword" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Initialcatalog" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="true" />
+          <Property Type="String" Name="SubscriptionCode" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Datasource" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetUnMappedCondoDataBase_Result">
+          <Property Type="Int32" Name="DataBaseId" Nullable="false" />
+          <Property Type="String" Name="ServerName" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="DbPassword" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Initialcatalog" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="EffectiveFrom" Nullable="true" Precision="23" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="true" />
+          <Property Type="String" Name="SubscriptionCode" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Datasource" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetRemsIntigrationDetailsBySubscriptionId_Result">
+          <Property Type="Int32" Name="RemsIntigrationId" Nullable="false" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="true" />
+          <Property Type="Int64" Name="RemsSubscriptionId" Nullable="true" />
+          <Property Type="String" Name="RemsFrontEndUrl" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="RemsBackEndUrl" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="AndroidApplicationName" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="IosApplicationName" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="IsIntigrationEnable" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="AppLogoPath" Nullable="true" MaxLength="2000" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetUserPasswordDetailsByCentralUserId_Result">
+          <Property Type="Int64" Name="CentralUserId" Nullable="false" />
+          <Property Type="String" Name="UserMobileNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UserPassword" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_DGC_GetAllTicketSystemDetails_Result">
+          <Property Type="Int32" Name="TicketId" Nullable="false" />
+          <Property Type="Int64" Name="SubscriptionId" Nullable="true" />
+          <Property Type="String" Name="SubscriptionCode" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="TicketSubject" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="TicketDescription" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="StatusDesc" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+          <Property Type="String" Name="TicketImagePath" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="RaisedBy" Nullable="true" MaxLength="2000" />
+          <Property Type="DateTime" Name="RaisedOn" Nullable="true" Precision="23" />
+          <Property Type="Int64" Name="RaisedByUserid" Nullable="true" />
           <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="5000" />
         </ComplexType>
       </Schema>
@@ -38,16 +1202,445 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProvalleyDigiCoAPIRepositoriesCentralDatabaseStoreContainer" CdmEntityContainer="CentralDigitalCondoEntities" >
-          <FunctionImportMapping FunctionImportName="SP_DGC_GetAllActiveSubscriptions" FunctionName="Provalley.DigiCo.API.Repositories.CentralDatabase.Store.SP_DGC_GetAllActiveSubscriptions">
+        <EntityContainerMapping StorageEntityContainer="CentralDigitalCondoModelStoreContainer" CdmEntityContainer="CentralDigitalCondoEntities" >
+          <FunctionImportMapping FunctionImportName="SP_DGC_SavePasswordDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SavePasswordDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_ValidateCentralUserCredentials" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_ValidateCentralUserCredentials" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_DeactivateCentralUserById" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_DeactivateCentralUserById" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetUserSubscriptionDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetUserSubscriptionDetails">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Provalley.DigiCo.API.Repositories.CentralDatabase.SP_DGC_GetAllActiveSubscriptions_Result">
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetUserSubscriptionDetails_Result">
+                <ScalarProperty Name="CentralUserId" ColumnName="CentralUserId" />
+                <ScalarProperty Name="UserMobileNumber" ColumnName="UserMobileNumber" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="SubscriptionCode" ColumnName="SubscriptionCode" />
+                <ScalarProperty Name="IsIndividual" ColumnName="IsIndividual" />
+                <ScalarProperty Name="COMPANYNAME" ColumnName="COMPANYNAME" />
+                <ScalarProperty Name="CompanyPICName" ColumnName="CompanyPICName" />
+                <ScalarProperty Name="UserSubscriptionPeriodFrom" ColumnName="UserSubscriptionPeriodFrom" />
+                <ScalarProperty Name="UserSubscriptionPeriodTo" ColumnName="UserSubscriptionPeriodTo" />
+                <ScalarProperty Name="CondoSubScriptionPeriodFrom" ColumnName="CondoSubScriptionPeriodFrom" />
+                <ScalarProperty Name="CondoSubScriptionPeriodTo" ColumnName="CondoSubScriptionPeriodTo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_ChangeUserPassword" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_ChangeUserPassword" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetEmailTemplate" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetEmailTemplate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetEmailTemplate_Result">
+                <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="TemplateSubject" ColumnName="TemplateSubject" />
+                <ScalarProperty Name="TemplateBody" ColumnName="TemplateBody" />
+                <ScalarProperty Name="TemplateStyle" ColumnName="TemplateStyle" />
+                <ScalarProperty Name="ReplaceWords" ColumnName="ReplaceWords" />
+                <ScalarProperty Name="isHtmlTemplate" ColumnName="isHtmlTemplate" />
+                <ScalarProperty Name="IsProdEnv" ColumnName="IsProdEnv" />
+                <ScalarProperty Name="DevloperToList" ColumnName="DevloperToList" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_ActivateCentralWebUser" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_ActivateCentralWebUser" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_ActivateCentralMobileUser" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_ActivateCentralMobileUser" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_Central_SaveOTPDeliveryDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_Central_SaveOTPDeliveryDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_DeleteRefreshToken" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_DeleteRefreshToken" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetActiveAPIConsumeClients" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetActiveAPIConsumeClients">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetActiveAPIConsumeClients_Result">
+                <ScalarProperty Name="APIConsumeId" ColumnName="APIConsumeId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientSecret" ColumnName="ClientSecret" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+                <ScalarProperty Name="RefreshTokenLifeTime" ColumnName="RefreshTokenLifeTime" />
+                <ScalarProperty Name="AllowedOrigin" ColumnName="AllowedOrigin" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetAPIRefreshTokenById" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetAPIRefreshTokenById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetAPIRefreshTokenById_Result">
+                <ScalarProperty Name="APIConsumeId" ColumnName="APIConsumeId" />
+                <ScalarProperty Name="RefreshTokenId" ColumnName="RefreshTokenId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="IssuedUtc" ColumnName="IssuedUtc" />
+                <ScalarProperty Name="ExpiresUtc" ColumnName="ExpiresUtc" />
+                <ScalarProperty Name="ProtectedTicket" ColumnName="ProtectedTicket" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetUserFireBaseDetailsById" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetUserFireBaseDetailsById" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveRefreshTokenDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveRefreshTokenDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveUserFireBaseDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveUserFireBaseDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveUserFireBaseToken" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveUserFireBaseToken" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveComapnyDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveComapnyDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_ValidateCentralUserAuthToken" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_ValidateCentralUserAuthToken" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetCondoSubscriptionInvoiceConfigDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetCondoSubscriptionInvoiceConfigDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetCondoSubscriptionInvoiceConfigDetails_Result">
+                <ScalarProperty Name="InvoiceConfigId" ColumnName="InvoiceConfigId" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="LateFee" ColumnName="LateFee" />
+                <ScalarProperty Name="IntrestFreeDays" ColumnName="IntrestFreeDays" />
+                <ScalarProperty Name="RateOfIntrestPerMonth" ColumnName="RateOfIntrestPerMonth" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveCondoSubscriptionInvoiceConfiguration" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveCondoSubscriptionInvoiceConfiguration" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetActiveComapnies" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetActiveComapnies">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetActiveComapnies_Result">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetActiveIsoCurrencyCodes" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetActiveIsoCurrencyCodes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetActiveIsoCurrencyCodes_Result">
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveSubscriptionBillingConfig" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveSubscriptionBillingConfig" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetPicDetailsBySubscriptionId" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetPicDetailsBySubscriptionId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetPicDetailsBySubscriptionId_Result">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveSubscriptionPicDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveSubscriptionPicDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetSubscriptionStatusChangeValues" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetSubscriptionStatusChangeValues">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetSubscriptionStatusChangeValues_Result">
+                <ScalarProperty Name="Statusid" ColumnName="Statusid" />
+                <ScalarProperty Name="statusvalue" ColumnName="statusvalue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetSubscriptionCurrentStatus" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetSubscriptionCurrentStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetSubscriptionCurrentStatus_Result">
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="CurrentStatusId" ColumnName="CurrentStatusId" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetConStringBySubscriptionCode" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetConStringBySubscriptionCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetConStringBySubscriptionCode_Result">
+                <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="SubscriptionCode" ColumnName="SubscriptionCode" />
+                <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DbPassword" ColumnName="DbPassword" />
+                <ScalarProperty Name="Datasource" ColumnName="Datasource" />
+                <ScalarProperty Name="Initialcatalog" ColumnName="Initialcatalog" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetAllComapanySubscriptionDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetAllComapanySubscriptionDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetAllComapanySubscriptionDetails_Result">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="IsIndividual" ColumnName="IsIndividual" />
+                <ScalarProperty Name="IsCompany" ColumnName="IsCompany" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="ActualActivatedOn" ColumnName="ActualActivatedOn" />
+                <ScalarProperty Name="SubscriptionCode" ColumnName="SubscriptionCode" />
+                <ScalarProperty Name="ParentComapanyid" ColumnName="ParentComapanyid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveComapnySubscriptionDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveComapnySubscriptionDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveTheManagerResposeDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveTheManagerResposeDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_ValidateUser_GetUserSubScriptionDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_ValidateUser_GetUserSubScriptionDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetCurrencyDescByCurrencyId" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetCurrencyDescByCurrencyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetCurrencyDescByCurrencyId_Result">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CurrencyDesc" ColumnName="CurrencyDesc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetSubscriptionBillingConfigBySubId" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetSubscriptionBillingConfigBySubId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetSubscriptionBillingConfigBySubId_Result">
+                <ScalarProperty Name="SubBillingID" ColumnName="SubBillingID" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+                <ScalarProperty Name="BillingCurrencyId" ColumnName="BillingCurrencyId" />
+                <ScalarProperty Name="CurrencyDesc" ColumnName="CurrencyDesc" />
+                <ScalarProperty Name="BillingPeriodFrom" ColumnName="BillingPeriodFrom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveTicketSystemActionDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveTicketSystemActionDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveTicketSystemDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveTicketSystemDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_DeactivateSmsProvider" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_DeactivateSmsProvider" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_DeleteAppDeviceDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_DeleteAppDeviceDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_DeleteFcmConfigDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_DeleteFcmConfigDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveAppDeviceDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveAppDeviceDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveFCMConfigDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveFCMConfigDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetAllSmsProviderDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetAllSmsProviderDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetAllSmsProviderDetails_Result">
+                <ScalarProperty Name="SmsProviderID" ColumnName="SmsProviderID" />
+                <ScalarProperty Name="SubScriptionId" ColumnName="SubScriptionId" />
+                <ScalarProperty Name="SmsProviderName" ColumnName="SmsProviderName" />
+                <ScalarProperty Name="ProviderContactNumber" ColumnName="ProviderContactNumber" />
+                <ScalarProperty Name="ProviderEmailID" ColumnName="ProviderEmailID" />
+                <ScalarProperty Name="GetwayCharges" ColumnName="GetwayCharges" />
+                <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+                <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+                <ScalarProperty Name="IsReplace" ColumnName="IsReplace" />
+                <ScalarProperty Name="TypeOfReplace" ColumnName="TypeOfReplace" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetAllFcmConfigDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetAllFcmConfigDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetAllFcmConfigDetails_Result">
+                <ScalarProperty Name="FcmConfigId" ColumnName="FcmConfigId" />
+                <ScalarProperty Name="AppDeviceId" ColumnName="AppDeviceId" />
+                <ScalarProperty Name="FCMApiUrl" ColumnName="FCMApiUrl" />
+                <ScalarProperty Name="FCMLegacyKey" ColumnName="FCMLegacyKey" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="DeleteComment" ColumnName="DeleteComment" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetAppDeviceDetailsById" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetAppDeviceDetailsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetAppDeviceDetailsById_Result">
+                <ScalarProperty Name="AppAuthTokenId" ColumnName="AppAuthTokenId" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ApplicationCode" ColumnName="ApplicationCode" />
+                <ScalarProperty Name="AppToken" ColumnName="AppToken" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetFcmConfigDetailsById" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetFcmConfigDetailsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetFcmConfigDetailsById_Result">
+                <ScalarProperty Name="FcmConfigId" ColumnName="FcmConfigId" />
+                <ScalarProperty Name="AppDeviceId" ColumnName="AppDeviceId" />
+                <ScalarProperty Name="FCMApiUrl" ColumnName="FCMApiUrl" />
+                <ScalarProperty Name="FCMLegacyKey" ColumnName="FCMLegacyKey" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetStatusChangeValuesByStatusFor" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetStatusChangeValuesByStatusFor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetStatusChangeValuesByStatusFor_Result">
+                <ScalarProperty Name="Statusid" ColumnName="Statusid" />
+                <ScalarProperty Name="statusvalue" ColumnName="statusvalue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetAllAppDeviceDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetAllAppDeviceDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetAllAppDeviceDetails_Result">
+                <ScalarProperty Name="AppAuthTokenId" ColumnName="AppAuthTokenId" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ApplicationCode" ColumnName="ApplicationCode" />
+                <ScalarProperty Name="AppToken" ColumnName="AppToken" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="DeleteComment" ColumnName="DeleteComment" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetActiveApplicationDevices" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetActiveApplicationDevices">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetActiveApplicationDevices_Result">
+                <ScalarProperty Name="AppAuthTokenId" ColumnName="AppAuthTokenId" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetSmsProviderDetailsById" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetSmsProviderDetailsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetSmsProviderDetailsById_Result">
+                <ScalarProperty Name="SmsProviderID" ColumnName="SmsProviderID" />
+                <ScalarProperty Name="SubScriptionId" ColumnName="SubScriptionId" />
+                <ScalarProperty Name="SmsProviderName" ColumnName="SmsProviderName" />
+                <ScalarProperty Name="ProviderContactNumber" ColumnName="ProviderContactNumber" />
+                <ScalarProperty Name="ProviderEmailID" ColumnName="ProviderEmailID" />
+                <ScalarProperty Name="GetwayCharges" ColumnName="GetwayCharges" />
+                <ScalarProperty Name="Params" ColumnName="Params" />
+                <ScalarProperty Name="SmsBaseURl" ColumnName="SmsBaseURl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveSmsProviderDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveSmsProviderDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetSmsProviderDetailsBySubScriptionCode" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetSmsProviderDetailsBySubScriptionCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetSmsProviderDetailsBySubScriptionCode_Result">
+                <ScalarProperty Name="SmsProviderID" ColumnName="SmsProviderID" />
+                <ScalarProperty Name="SubScriptionId" ColumnName="SubScriptionId" />
+                <ScalarProperty Name="SmsProviderName" ColumnName="SmsProviderName" />
+                <ScalarProperty Name="ProviderContactNumber" ColumnName="ProviderContactNumber" />
+                <ScalarProperty Name="ProviderEmailID" ColumnName="ProviderEmailID" />
+                <ScalarProperty Name="GetwayCharges" ColumnName="GetwayCharges" />
+                <ScalarProperty Name="Params" ColumnName="Params" />
+                <ScalarProperty Name="SmsBaseURl" ColumnName="SmsBaseURl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetSubscriptionBillConfigRates" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetSubscriptionBillConfigRates">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetSubscriptionBillConfigRates_Result">
+                <ScalarProperty Name="SubscriptionBillId" ColumnName="SubscriptionBillId" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="RateCalculationId" ColumnName="RateCalculationId" />
+                <ScalarProperty Name="SlabRateAmount" ColumnName="SlabRateAmount" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveCondoSubscriptionBillRates" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveCondoSubscriptionBillRates" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GenerateOTPForMobileNumber" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GenerateOTPForMobileNumber" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetAllActiveSubscriptions" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetAllActiveSubscriptions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetAllActiveSubscriptions_Result">
                 <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_DGC_SavePasswordDetails" FunctionName="Provalley.DigiCo.API.Repositories.CentralDatabase.Store.SP_DGC_SavePasswordDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetInvoiceSchedulebySubscriptionid" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetInvoiceSchedulebySubscriptionid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetInvoiceSchedulebySubscriptionid_Result">
+                <ScalarProperty Name="InvoiceScheduleID" ColumnName="InvoiceScheduleID" />
+                <ScalarProperty Name="SubScriptionId" ColumnName="SubScriptionId" />
+                <ScalarProperty Name="TypeOfBill" ColumnName="TypeOfBill" />
+                <ScalarProperty Name="RecurringPeriod" ColumnName="RecurringPeriod" />
+                <ScalarProperty Name="ScheduleDayOfMonth" ColumnName="ScheduleDayOfMonth" />
+                <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveInvoiceSchedule" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveInvoiceSchedule" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetCentralConfigValuesByName" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetCentralConfigValuesByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetCentralConfigValuesByName_Result">
+                <ScalarProperty Name="ConfigurationKey" ColumnName="ConfigurationKey" />
+                <ScalarProperty Name="ConfigurationValue" ColumnName="ConfigurationValue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveForgetPasswordRequest" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveForgetPasswordRequest" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveResetpasswordRequest" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveResetpasswordRequest" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveCentralUserDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveCentralUserDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetAllCondoDataBaseDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetAllCondoDataBaseDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetAllCondoDataBaseDetails_Result">
+                <ScalarProperty Name="DataBaseId" ColumnName="DataBaseId" />
+                <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DbPassword" ColumnName="DbPassword" />
+                <ScalarProperty Name="Initialcatalog" ColumnName="Initialcatalog" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="SubscriptionCode" ColumnName="SubscriptionCode" />
+                <ScalarProperty Name="Datasource" ColumnName="Datasource" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveCondoDataBaseDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveCondoDataBaseDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetUnMappedCondoDataBase" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetUnMappedCondoDataBase">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetUnMappedCondoDataBase_Result">
+                <ScalarProperty Name="DataBaseId" ColumnName="DataBaseId" />
+                <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DbPassword" ColumnName="DbPassword" />
+                <ScalarProperty Name="Initialcatalog" ColumnName="Initialcatalog" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="SubscriptionCode" ColumnName="SubscriptionCode" />
+                <ScalarProperty Name="Datasource" ColumnName="Datasource" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveStatusChangeHistoryDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveStatusChangeHistoryDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetRemsIntigrationDetailsBySubscriptionId" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetRemsIntigrationDetailsBySubscriptionId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetRemsIntigrationDetailsBySubscriptionId_Result">
+                <ScalarProperty Name="RemsIntigrationId" ColumnName="RemsIntigrationId" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="RemsSubscriptionId" ColumnName="RemsSubscriptionId" />
+                <ScalarProperty Name="RemsFrontEndUrl" ColumnName="RemsFrontEndUrl" />
+                <ScalarProperty Name="RemsBackEndUrl" ColumnName="RemsBackEndUrl" />
+                <ScalarProperty Name="AndroidApplicationName" ColumnName="AndroidApplicationName" />
+                <ScalarProperty Name="IosApplicationName" ColumnName="IosApplicationName" />
+                <ScalarProperty Name="IsIntigrationEnable" ColumnName="IsIntigrationEnable" />
+                <ScalarProperty Name="AppLogoPath" ColumnName="AppLogoPath" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveCondoSubscriptionRemsIntigrationDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveCondoSubscriptionRemsIntigrationDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_SaveInitailaManagerSubscriptionUserDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_SaveInitailaManagerSubscriptionUserDetails" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetPropertyManagerDetailsBySubscriptionId" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetPropertyManagerDetailsBySubscriptionId" />
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetUserPasswordDetailsByCentralUserId" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetUserPasswordDetailsByCentralUserId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetUserPasswordDetailsByCentralUserId_Result">
+                <ScalarProperty Name="CentralUserId" ColumnName="CentralUserId" />
+                <ScalarProperty Name="UserMobileNumber" ColumnName="UserMobileNumber" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DGC_GetAllTicketSystemDetails" FunctionName="CentralDigitalCondoModel.Store.SP_DGC_GetAllTicketSystemDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CentralDigitalCondoModel.SP_DGC_GetAllTicketSystemDetails_Result">
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="SubscriptionCode" ColumnName="SubscriptionCode" />
+                <ScalarProperty Name="TicketSubject" ColumnName="TicketSubject" />
+                <ScalarProperty Name="TicketDescription" ColumnName="TicketDescription" />
+                <ScalarProperty Name="StatusDesc" ColumnName="StatusDesc" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="TicketImagePath" ColumnName="TicketImagePath" />
+                <ScalarProperty Name="RaisedBy" ColumnName="RaisedBy" />
+                <ScalarProperty Name="RaisedOn" ColumnName="RaisedOn" />
+                <ScalarProperty Name="RaisedByUserid" ColumnName="RaisedByUserid" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
