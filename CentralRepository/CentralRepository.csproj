@@ -50,145 +50,149 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CentralDigitalCondo.Context.cs">
+    <Compile Include="CentralDatabase\CentralDigitalCondo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CentralDigitalCondo.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="CentralDigitalCondo.cs">
+    <Compile Include="CentralDatabase\CentralDigitalCondo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
     </Compile>
-    <Compile Include="CentralDigitalCondo.Designer.cs">
+    <Compile Include="CentralDatabase\CentralDigitalCondo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CentralDigitalCondo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetActiveAPIConsumeClients_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetActiveApplicationDevices_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetActiveComapnies_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetActiveIsoCurrencyCodes_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetAllActiveSubscriptions_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetAllAppDeviceDetails_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetAllComapanySubscriptionDetails_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetAllCondoDataBaseDetails_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetAllFcmConfigDetails_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetAllSmsProviderDetails_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetAllTicketSystemDetails_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetAPIRefreshTokenById_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetAppDeviceDetailsById_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetCentralConfigValuesByName_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetCondoSubscriptionInvoiceConfigDetails_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetConStringBySubscriptionCode_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetCurrencyDescByCurrencyId_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetEmailTemplate_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetFcmConfigDetailsById_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetInvoiceSchedulebySubscriptionid_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetPicDetailsBySubscriptionId_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetRemsIntigrationDetailsBySubscriptionId_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetSmsProviderDetailsById_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetSmsProviderDetailsBySubScriptionCode_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetStatusChangeValuesByStatusFor_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetSubscriptionBillConfigRates_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetSubscriptionBillingConfigBySubId_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetSubscriptionCurrentStatus_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetSubscriptionStatusChangeValues_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetUnMappedCondoDataBase_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetUserPasswordDetailsByCentralUserId_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentralDatabase\SP_DGC_GetUserSubscriptionDetails_Result.cs">
+      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SP_DGC_GetActiveAPIConsumeClients_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetActiveApplicationDevices_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetActiveComapnies_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetActiveIsoCurrencyCodes_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetAllActiveSubscriptions_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetAllAppDeviceDetails_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetAllComapanySubscriptionDetails_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetAllCondoDataBaseDetails_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetAllFcmConfigDetails_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetAllSmsProviderDetails_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetAllTicketSystemDetails_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetAPIRefreshTokenById_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetAppDeviceDetailsById_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetCentralConfigValuesByName_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetCondoSubscriptionInvoiceConfigDetails_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetConStringBySubscriptionCode_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetCurrencyDescByCurrencyId_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetEmailTemplate_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetFcmConfigDetailsById_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetInvoiceSchedulebySubscriptionid_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetPicDetailsBySubscriptionId_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetRemsIntigrationDetailsBySubscriptionId_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetSmsProviderDetailsById_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetSmsProviderDetailsBySubScriptionCode_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetStatusChangeValuesByStatusFor_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetSubscriptionBillConfigRates_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetSubscriptionBillingConfigBySubId_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetSubscriptionCurrentStatus_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetSubscriptionStatusChangeValues_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetUnMappedCondoDataBase_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetUserPasswordDetailsByCentralUserId_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SP_DGC_GetUserSubscriptionDetails_Result.cs">
-      <DependentUpon>CentralDigitalCondo.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <EntityDeploy Include="CentralDigitalCondo.edmx">
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="CentralDatabase\CentralDigitalCondo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CentralDigitalCondo.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="CentralDigitalCondo.edmx.diagram">
+    <None Include="CentralDatabase\CentralDigitalCondo.edmx.diagram">
       <DependentUpon>CentralDigitalCondo.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CentralDigitalCondo.Context.tt">
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CentralDatabase\CentralDigitalCondo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CentralDigitalCondo.edmx</DependentUpon>
       <LastGenOutput>CentralDigitalCondo.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="CentralDigitalCondo.tt">
+    <Content Include="CentralDatabase\CentralDigitalCondo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CentralDigitalCondo.edmx</DependentUpon>
       <LastGenOutput>CentralDigitalCondo.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

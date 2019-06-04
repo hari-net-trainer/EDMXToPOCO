@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -17,6 +18,21 @@ namespace EdmxToPOCOGen
         static string fileClassName = string.Empty;
         static void Main(string[] args)
         {
+            //var EdmxReturnType = "Collection(CentralDigitalCondoModel.SP_DGC_GetUserSubscriptionDetails_Result)";
+            //var retVal = EdmxReturnType;
+            //var pattren = @"^Collection\(?(.+)\)$";
+            //Regex expression = new Regex(pattren, RegexOptions.IgnoreCase);
+            //var mat = expression.Match(retVal);
+            //if (mat.Success)
+            //{
+            //    foreach (var item in mat.Groups)
+            //    {
+            //        Console.WriteLine(item);
+            //    }
+            //    retVal = mat.Captures.Cast<string>().Last();
+            //}
+            //Console.WriteLine(retVal);
+
             Console.WriteLine("Wellcome to POCO(Plain Old CLR Object) genarator from EDMX!");
             Console.WriteLine("Did you add any new object(Only StoreProc) added to the EDMX?");
             Console.WriteLine("If Yes... Press Enter Else Press any key to exit.");
@@ -90,6 +106,8 @@ namespace EdmxToPOCOGen
             autoGenPOCO.AppendLine("    using System.Data.Entity.Infrastructure;");
             autoGenPOCO.AppendLine("    using System.Data.Entity.Core.Objects;");
             autoGenPOCO.AppendLine("    using System.Linq;");
+            autoGenPOCO.AppendLine("    using System.Data;");
+            autoGenPOCO.AppendLine("    using System.Data.SqlClient;");
             autoGenPOCO.AppendLine("");
             autoGenPOCO.AppendLine(string.Format("    public partial class {0} : DbContext", fileClassName));
             autoGenPOCO.AppendLine("    {");
@@ -100,7 +118,7 @@ namespace EdmxToPOCOGen
             autoGenPOCO.AppendLine("");
             autoGenPOCO.AppendLine("        protected override void OnModelCreating(DbModelBuilder modelBuilder)");
             autoGenPOCO.AppendLine("        {");
-            autoGenPOCO.AppendLine("            throw new UnintentionalCodeFirstException();");
+            autoGenPOCO.AppendLine("            //throw new UnintentionalCodeFirstException();");
             autoGenPOCO.AppendLine("        }");
             autoGenPOCO.AppendLine("");
 
@@ -133,7 +151,7 @@ namespace EdmxToPOCOGen
             return retStr;
         }
 
-        static XElement GetElementByAttribute(XNamespace edmxNS, string elmName, string attrName, string attrValue, string parantElm = null)
+        static XElement GetElementByFuncAndParam(XNamespace edmxNS, string funcName, string attrValue, string parantElm = null)
         {
             var root = edmxXmlElm;
             if (!string.IsNullOrEmpty(parantElm))
@@ -141,8 +159,8 @@ namespace EdmxToPOCOGen
                 root = edmxXmlElm.Descendants(edmxNS + parantElm).First();
             }
 
-            var retElm = root.Descendants().Where(x => x.Name.LocalName == elmName);
-            var temp = retElm.Where(x => x.Attribute(attrName) != null && x.Attribute(attrName).Value == attrValue).FirstOrDefault();
+            var retElm = root.Descendants().Where(x => x.Name.LocalName == "Function" && x.Attribute("Name").Value == funcName);
+            var temp = retElm.Descendants().FirstOrDefault(x => x.Name.LocalName == "Parameter" && x.Attribute("Name").Value == attrValue);
             return temp;
         }
 
@@ -188,7 +206,7 @@ namespace EdmxToPOCOGen
                                     parmObj.ClrType = parAttr.Value;
                                 }
                             }
-                            var sqlTyp = GetElementByAttribute(edmxNS, "Parameter", "Name", parmObj.Name, "StorageModels");
+                            var sqlTyp = GetElementByFuncAndParam(edmxNS, func.Name, parmObj.Name, "StorageModels");
                             if (sqlTyp != null)
                             {
                                 parmObj.SqlType = sqlTyp.Attribute("Type").Value;
