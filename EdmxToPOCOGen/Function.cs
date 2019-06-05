@@ -52,15 +52,31 @@ namespace EdmxToPOCOGen
             {
                 if (param.Mode == "InOut" || param.Mode == "Out")
                 {
-                    assigmParam.AppendLine(string.Format("           var {0}Parameter = new SqlParameter(\"{1}\", SqlDbType.{2}{3});", param.FunctionParamName, param.Name, param.SqlTypeEnum.ToString(), param.ClrType == "String" ? ", 250" : ""));
+                    assigmParam.AppendLine(string.Format("           var {0}Parameter = new SqlParameter(\"{1}\", SqlDbType.{2}{3});", param.FunctionParamName, param.Name, param.SqlTypeEnum.ToString(), param.ClrType == "String" ? ", 500" : ""));
                     assigmParam.AppendLine(string.Format("               {0}Parameter.Direction = System.Data.ParameterDirection.Output;", param.FunctionParamName));
                     assigmParam.AppendLine(string.Format("               {0}Parameter.Value = {0} != null ? {0}.Value : null;", param.FunctionParamName));
                 }
                 else
                 {
-                    assigmParam.AppendLine(string.Format("            var {0}Parameter = {0}{1} ?", param.FunctionParamName, param.Nullable ? ".HasValue" : " != null"));
-                    assigmParam.AppendLine(string.Format("                new SqlParameter(\"{0}\", {1}) :", param.Name, param.FunctionParamName));
-                    assigmParam.AppendLine(string.Format("                new SqlParameter(\"{0}\", SqlDbType.{1});", param.Name, param.SqlTypeEnum.ToString()));
+                    if (param.SqlTypeEnum == SqlDbType.VarChar)
+                    {
+                        assigmParam.AppendLine(string.Format("           var {0}Parameter = new SqlParameter(\"{1}\", SqlDbType.{2}, 500);", param.FunctionParamName, param.Name, param.SqlTypeEnum.ToString()));
+                        assigmParam.AppendLine(string.Format("           if (string.IsNullOrWhiteSpace({0}))", param.FunctionParamName));
+                        assigmParam.AppendLine("           {");
+                        assigmParam.AppendLine(string.Format("               {0}Parameter.IsNullable = true;", param.FunctionParamName));
+                        assigmParam.AppendLine(string.Format("               {0}Parameter.Value = DBNull.Value;", param.FunctionParamName));
+                        assigmParam.AppendLine("           }");
+                        assigmParam.AppendLine("           else");
+                        assigmParam.AppendLine("           {");
+                        assigmParam.AppendLine(string.Format("               {0}Parameter.Value = {0};", param.FunctionParamName));
+                        assigmParam.AppendLine("           }");
+                    }
+                    else
+                    {
+                        assigmParam.AppendLine(string.Format("            var {0}Parameter = {0}{1} ?", param.FunctionParamName, param.Nullable ? ".HasValue" : " != null"));
+                        assigmParam.AppendLine(string.Format("                new SqlParameter(\"{0}\", {1}) :", param.Name, param.FunctionParamName));
+                        assigmParam.AppendLine(string.Format("                new SqlParameter(\"{0}\", SqlDbType.{1});", param.Name, param.SqlTypeEnum.ToString()));
+                    }
                 }
                 assigmParam.AppendLine("");
             }

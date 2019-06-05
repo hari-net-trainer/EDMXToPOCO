@@ -121,8 +121,8 @@ namespace EdmxToPOCOGen
             autoGenPOCO.AppendLine("            //throw new UnintentionalCodeFirstException();");
             autoGenPOCO.AppendLine("        }");
             autoGenPOCO.AppendLine("");
-
-            foreach (var sp in spLst)
+            var orderWithSPName = spLst.OrderBy(o => o.Name);
+            foreach (var sp in orderWithSPName)
             {
                 autoGenPOCO.AppendLine(string.Format("        public virtual {0} {1}({2})", sp.ClassReturn, sp.Name, string.Join(", ", sp.Parameters.Select(x => x.ParamType))));
                 autoGenPOCO.AppendLine("        {");

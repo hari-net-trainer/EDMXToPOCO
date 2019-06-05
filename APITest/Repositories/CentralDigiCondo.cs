@@ -133,15 +133,60 @@ namespace Repositories
         public virtual int SP_DGC_ValidateUser_GetUserSubScriptionDetails(string userMobileNumber, string userPassword, string googleFireBaseToken, string userAccessDevice, string isWebCalling, ObjectParameter centralUserId, ObjectParameter subscriptionId, ObjectParameter subscriptionCode, ObjectParameter userAuthToken)
         {
 
-            var userMobileNumberParameter = new SqlParameter("UserMobileNumber", "9911223344");
+            var userMobileNumberParameter = new SqlParameter("UserMobileNumber", SqlDbType.VarChar, 500);
+            if (string.IsNullOrWhiteSpace(userMobileNumber))
+            {
+                userMobileNumberParameter.IsNullable = true;
+                userMobileNumberParameter.Value = DBNull.Value;
+            }
+            else
+            {
+                userMobileNumberParameter.Value = userMobileNumber;
+            }
 
-            var userPasswordParameter =  new SqlParameter("UserPassword", "i9Iape1kYHO2365QH+0xLw==");
+            var userPasswordParameter = new SqlParameter("UserPassword", SqlDbType.VarChar, 500);
+            if (string.IsNullOrWhiteSpace(userPassword))
+            {
+                userPasswordParameter.IsNullable = true;
+                userPasswordParameter.Value = DBNull.Value;
+            }
+            else
+            {
+                userPasswordParameter.Value = userPassword;
+            }
 
-            var googleFireBaseTokenParameter =  new SqlParameter("GoogleFireBaseToken", "o");
+            var googleFireBaseTokenParameter = new SqlParameter("GoogleFireBaseToken", SqlDbType.VarChar, 500);
+            if (string.IsNullOrWhiteSpace(googleFireBaseToken))
+            {
+                googleFireBaseTokenParameter.IsNullable = true;
+                googleFireBaseTokenParameter.Value = DBNull.Value;
+            }
+            else
+            {
+                googleFireBaseTokenParameter.Value = googleFireBaseToken;
+            }
 
-            var userAccessDeviceParameter =  new SqlParameter("UserAccessDevice", "o");
+            var userAccessDeviceParameter = new SqlParameter("UserAccessDevice", SqlDbType.VarChar, 500);
+            if (string.IsNullOrWhiteSpace(userAccessDevice))
+            {
+                userAccessDeviceParameter.IsNullable = true;
+                userAccessDeviceParameter.Value = DBNull.Value;
+            }
+            else
+            {
+                userAccessDeviceParameter.Value = userAccessDevice;
+            }
 
-            var isWebCallingParameter = new SqlParameter("IsWebCalling", "Y");
+            var isWebCallingParameter = new SqlParameter("IsWebCalling", SqlDbType.VarChar, 500);
+            if (string.IsNullOrWhiteSpace(isWebCalling))
+            {
+                isWebCallingParameter.IsNullable = true;
+                isWebCallingParameter.Value = DBNull.Value;
+            }
+            else
+            {
+                isWebCallingParameter.Value = isWebCalling;
+            }
 
             var centralUserIdParameter = new SqlParameter("CentralUserId", SqlDbType.BigInt);
             centralUserIdParameter.Direction = System.Data.ParameterDirection.Output;
@@ -151,11 +196,11 @@ namespace Repositories
             subscriptionIdParameter.Direction = System.Data.ParameterDirection.Output;
             subscriptionIdParameter.Value = subscriptionId != null ? subscriptionId.Value : null;
 
-            var subscriptionCodeParameter = new SqlParameter("SubscriptionCode", SqlDbType.VarChar, 250);
+            var subscriptionCodeParameter = new SqlParameter("SubscriptionCode", SqlDbType.VarChar, 500);
             subscriptionCodeParameter.Direction = System.Data.ParameterDirection.Output;
             subscriptionCodeParameter.Value = subscriptionCode != null ? subscriptionCode.Value : null;
 
-            var userAuthTokenParameter = new SqlParameter("UserAuthToken", SqlDbType.VarChar, 250);
+            var userAuthTokenParameter = new SqlParameter("UserAuthToken", SqlDbType.VarChar, 500);
             userAuthTokenParameter.Direction = System.Data.ParameterDirection.Output;
             userAuthTokenParameter.Value = userAuthToken != null ? userAuthToken.Value : null;
 
