@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,8 +48,1212 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DigitalCondomium.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DigitalCondomium.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DigitalCondomium.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DigitalCondomium.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DigitalCondomium.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_CommercialUnitInvoiceDuesummerybyBillcode_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAccessGoodsRequestDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAccessGoodsRequestedMembers_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAccessGoodsRequestHistoryById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAccessGoodsRequestIssueDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAccessGoodsRequest_PayLines_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveAccessGoodsByStockCatagoryId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveAccountItemByAccountID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveAccounts_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveAdditionalServiceProviders_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveApprovalRFQQuotes_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveAssets_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveBillType_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveBlockSettings_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveCondoFacilities_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveCondoMaterials_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveCountriesByFlag_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveCourtsAndTrainersByFacilitiesId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveCourtsByFacilitiesId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveCourtsorTrainersByFacilityId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveDepartments_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveFacilityLineDetailsByFacilityId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveFinancialPeriods_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveFloorSettingsByBlockId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveGlAccountItemsByGlId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveGlAccountNumbers_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveHallFeeDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveHouseRuleDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveInvoiceConfigurationDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveMinutesOfMeetingDates_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveNonStockItems_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveNonVisitorSlots_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveNotifications_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActivePaidFacilities_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveProviderNamesForUtilityInvoice_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveResidenceUnits_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveRoles_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveSecurityMemebers_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveShops_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveStockCategories_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveSuppliers_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveTaxCodes_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveUnitInvoiceByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveUnitSettingsByFloorId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveUnits_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveUsers_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveVendorComapaniesByDeptID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveVendorCompany_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveVendorCompany_Result1.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveVendorInvoiceByVendorID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveVendorServiceDepartments_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetActiveWorkOrders_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAdditionalServiceProviderById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAdminOfficeUsersByAutoText_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllAccessGoodsRequests_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllActiveCondoAccounts_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllActiveERContacts_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllAdditionalServiceProviders_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllAnnouncements_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllAssetsDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllAssetsPurchaseActionDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllAssetsPurchaseDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllAssetsPurchaseLineItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllBlocksSettings_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllChartsOfAccountItems_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllChartsOfAccounts_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllClampRequestDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllComiteeMembers_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllComplaintDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCondoAssetDepreciationDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCondoBankAccounts_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCondoFacilityBookingDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCondoItem_GLItem_MappingDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCondoMeterials_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllConfigurationDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCountriesDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCourtsDetailsByFacilityId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCreditNotes_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCreditNoteUnitInvoiceLineItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllCreditNoteVendorInvoiceLineItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllDebitNotes_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllDebitNoteUnitInvoiceLineItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllDebitNoteVendorInvoiceLineItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllDepartmentsDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllDiscountSetUp_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllEmailTemplates_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllEmergencyContacts_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllFacilitiesBookingReq_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllFacilitiesBooking_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllFacilityDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllFacilitySlotSettingDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllFcmNotificationDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllFinancialPeriodDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllFloorNotifications_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllFloorSettings_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllGasConsumeDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllGeneralLedgerEntryDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllGlAccountItems_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllGlGroup_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllHallBookingInitialSetupDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllHallBookingRequest_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllHallSlotSettingDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllHouseRulesDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllLoanPaymentDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllLocationDetailsByFacilityId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllMaintenanceBillInitialSetupDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllMenuDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllMinutesOfMeetingDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllNonStockItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllNotifications_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllPurchaseInvoiceDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllPurchaseInvoiceLineItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllReconcilationDetailsByMonth_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllReconciliationAmendments_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllRennovationRequestDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllRennovationRequestInitialSetupDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllRequestForQuotation_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllRFQItemsDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllRFQQuotesDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllRoleNotifications_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllRoles_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllShopMembersDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllShopRegistrationDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllSinkFundByFiscalPeriod_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllStockCategory_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllStockDispatchDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllTaxSetUp_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllTenantRequestDetailsByUnitIds_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUitRequestItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitDisplayFormats_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitGasBillDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitInvoiceBillDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitInvoicePaidDetailsByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitManintanceBillDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitNotifications_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitOpenCreditDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitOwnerSetupDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitPurchaseDetailsByUnitIds_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitRequestAccountItemMappingDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitSettings_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitShopRentBillDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitsOfCondomium_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnitWaterBillDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnSourceExpenseRequest_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnSourceExpensiveIntraAccountTransfer_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnSourceExpensivePayments_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUnSourceExpensiveReceipts_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUserDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUtilityBillServices_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUtilityInvoiceDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUtilityInvoiceLineItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllUtiltityBillsDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVehicleParkingRequest_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVehicleParkingSlotSetting_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVendorComapnyMembersDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVendorInvoiceActionDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVendorInvoiceDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVendorInvoiceLineItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVendorMappingDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVendorRegistrationDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVisitorRequestDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVisitorRequests_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVisitorsRequestsDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllVoucherPaymentDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllWaterBillInitialSetupDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllWaterConsumeDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllWOrkOrderItemsDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAllWOrkOrders_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAnnouncementById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAssetPurchaselineitemByLineId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAssetsByAssetId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAssetsPurchaseByAPurchaseId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAssetsPurchasePayableLines_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAvailableFacilitySlotsByDate_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetAvailableSlotsByDate_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetBillTypeDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetBlockSettingsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetClampFeeDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetClampFeePayItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetClampPriceDetails_V1_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetClampRequestDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetClampRequestHistoryById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCommercialUNitInvoiceBillSummeryByUnitID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCommercialUnitLineDetailsByCommercialUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCommercialUnitLinePackagePriceDetailsByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCommercialUnitRentPayments_ToDoReversal_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCommercialUnits_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCommitieMemberDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCompanyMemberDetailsByMemberId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetComplaintDetaisById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetComplaintHistoryDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetComplaintInProgressDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCondoAssetDepreciationByDRequestId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCondoAssetDetailsByAPurchaseId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCondoBankAccountByAccountId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCondoDepreciationRequestDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCondoGlItemMappingDetailsByItemRqid_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCondomiumSettings_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetConfigurationById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetConfigurationValuesByName_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetConfigValuesByName_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCountries_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCountryDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCourtNameById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCourtPaymentPackagesId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCourtsByFacilityId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCourtShutDownDatesById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCourtWorkingHoursByCourtId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCreditNoteDetailsbyId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCurrentAccessGoodsInfoByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCurrentActiveCommiteeMembers_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCurrentAnnouncements_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCurrentCommiteeMembers_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCurrentInvoiceInfoByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetCurrentNotifications_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetDebitNoteDetailsbyId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetDepartmentByDptId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetDepreciatioRequestByRequestId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetDiscountSetUpById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetEligibileVendorInvociesForDNFwd_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetEmailTemplateByID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetEmailTemplate_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetEmergencyContactById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilitiesDetialsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityBookFeePayItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityBookingDetailsForNext60Days_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityBookingFeeRefundItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityBookingHistoryById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityChargesByBookingSlotId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityCourtByCourtId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityLastBookingDateBySlotId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityLineDetailsByFacilityId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityLinePackagePriceDetailsByFacilityId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityLinePackagePriceDetailsByLineId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFacilityLocationByLocationId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetfacilityReqById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFcmNotificationDetailsByControllerName_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFcmNotificationDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFinancialPeriodDetailsByID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetFloorSettingsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetGasConsumeByMeterReadingId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetGlAccountMappingByRequestId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetGoodsPriceDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetHallBookFeePayItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetHallBookFeeRefundItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetHallBookingHistoryById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetHallBookingRequestByHBRId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetHallDetailsForNext60Days_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetHallFeeDetailsByBookinglotId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetHallFeeDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetHallLastBookingDateBySlotId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetHallPriceDetails_V1_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetInitialSetupErrorsBasedOnLineNumber_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetInvoiceBillSummeryByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetIPayMerchantDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLast12MonthsMaintanceBillsOfUnit_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLast12MonthsWaterBillsOfUnit_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLast12MonthsWaterReadingOfUnit_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLastGasReadingOfUnitByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLastGasReadingOfUnit_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLastInvoicePaymentDetailsByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLastWaterReadingOfUnitByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLastWaterReadingOfUnit_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetlatestHouseRules_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLivingMembersByUnitIdForSecurity_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLivingMembersByUnitIdforVMS_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLivingMembersByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLivingOwnerByUnitIdforVMS_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetLocationShutDownDatesById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetMenuDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetMenusBasedOnRole_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetMonthWiseFacilityBookingDates_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetMonthWiseHallBookingDates_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetNonStockItemCollectionByNonstockId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetNotificationById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetNotificationByUserid_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetNotificationReceivers_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetOwnerDetailsByNameSearch_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetOwnerTenantByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetPaidParkingHistoryByRequestId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetParentMenuDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetPaymentItemDetailsBySourceRequestID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetPurchaseInVoiceByPInoiceId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetPurchaseInvoicelineitemByLineId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRennovationRefundItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRennovationRequestDepositItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRennovationRequestDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRennovationRequestHistoryById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetResUnitOwnerDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetResUnitTenantDetailsByUnitId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRFQDetailsbyId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRFQItemDetailsbyItemId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRFQQuotesDetailsbyId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRolesByDepartmentId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRolesByDeptName_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetRolesByRoleId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetShopCommercialUnits_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetShopDepositPayItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetShopDepositRefundItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetShopMemberDetailsBySMId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetShopPICDetailsBySRId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetShopRegistrationById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetSinkFundDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetStockCategoryById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetStockSellingPriceByStockId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetTaxSetUpByTaxId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetTodayAllVisitorRequests_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetTodaysVisitorRequests_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetTrainerDetailsByFacilityId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetTrainerDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUNitBillSummaryByInvoiceID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUNitBillSummeryByUnitID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitInvoiceBillPayments_ToDoReversal_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitInvoiceBillsHistoryByInvoiceId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUNitInvoiceBillSummeryByUnitID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitInvoiceCofigurationDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitInvoiceConfigurationBillTypes_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitInvoiceLineDetailsByInvoiceId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitOwnerDependentDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitPurchaseDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitRequestItemById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitRequestItemsByRequestType_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitSettingDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitSettingsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitTenantDependentDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUnitTenantRequestDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUserDetailsByCentralId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUserDetailsByCentralUserId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUserDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUserDetailsByMobileNumber_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUserEmailsforNotificationByNFId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUserPermitableUnitsByCentralUserId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUserPermitableUnitsByUserId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUsersOfRoleByNameSearch_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUtilityBillsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUtilityInVoiceByUInoiceId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetUtilityInvoicelineitemByLineId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVehicleParkDepositPayItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVehicleParkDepositRefundItemDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVehicleParkFeeDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVehicleParkingSlotBySlotID_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVendorInVoiceByVInoiceId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVendorInvoicelineitemByLineId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVendorInvoicePayableLines_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVendorPICDetailsByVRId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVendorRegistrationDetailsById_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVisitorByVisitorId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVisitorByVisitorReqId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVisitorDetailsByVisitorId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVisitorInButNotOutDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVisitorParkingSlots_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVisitorRequestHistoryByRequestId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetVoucherPaymentDetailsByPaymentId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetWaterConsumeByMeterReadingId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetWorkOrdersDetailsbyId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_GetWorkOrdersItemDetailsbyItemId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_InitialSetUp_GetAccessCardsRequestDetailsByAccessGoodsId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_InitialSetUp_GetAllAdvancePaymentDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_InitialSetUp_GetAllFacilityRequestDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_InitialSetUp_GetAllPaidParkingSlotRequestDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_InitialSetUp_GetAllShopPaymentSetupDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_InitialSetUp_GetAllTenantSetupDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_IntialSetup_GetAllExpenseProcessDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_IntialSetup_GetAllLedgerProcessDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_IntialSetup_GetAllShopProcessDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_IntialSetup_GetAllUnitInvoiceBillDueProcessDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_IntialSetup_GetAllVendorCompanyProcessDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_IntialSetup_GetOwnerDetailsBySetupd_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_IntialSetup_GetTenantDetailsBySetupd_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_PG_GetPaymentLineDetailsByPaymentId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_PG_GetPG_RequestResponseByPGResponseId_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_PG_SaveFailureResponseDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_PG_SavePGResponseDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RptCommon_CondominiumAddress_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RPT_GetAllBalanceReportsByDateWise_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RPT_GetAllDueAmountReports_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RPT_GetAllExpenseReportsByDateWise_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RPT_GetAllIncomeReportsByDateWise_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RPT_GetAllVisitorEntryReportsByDateWise_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RPT_GetAllVisitorRequestReportsByDateWise_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RPT_GetMonthWiseIncomeExpenseDetailsBySources_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RPT_GetNoOfComplaintByDepartmentStatus_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_RPT_GetYearWiseExpensive_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_Setup_SaveRennovationReqDetails_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_UnitDueReminder_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SP_DGC_UnitInvoiceDuesummerybyBillcode_Result.cs">
+      <DependentUpon>DigitalCondomium.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Database\DigitalCondomium.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DigitalCondomium.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Database\DigitalCondomium.edmx.diagram">
+      <DependentUpon>DigitalCondomium.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\DigitalCondomium.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DigitalCondomium.Context.cs</LastGenOutput>
+      <DependentUpon>DigitalCondomium.edmx</DependentUpon>
+    </Content>
+    <Content Include="Database\DigitalCondomium.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DigitalCondomium.edmx</DependentUpon>
+      <LastGenOutput>DigitalCondomium.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
