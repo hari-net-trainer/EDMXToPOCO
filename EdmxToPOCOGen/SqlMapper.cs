@@ -105,8 +105,9 @@ namespace EdmxToPOCOGen
                     {SqlDbType.Int,DbType.Int32},
                     {SqlDbType.Money,DbType.Decimal},
                     {SqlDbType.NChar,DbType.StringFixedLength},
-                    {SqlDbType.NText,DbType.String},
+                    {SqlDbType.VarChar,DbType.String},
                     {SqlDbType.NVarChar,DbType.String},
+                    {SqlDbType.NText,DbType.String},
                     {SqlDbType.Real,DbType.Single},
                     {SqlDbType.Timestamp,DbType.Binary},
                     {SqlDbType.SmallInt,DbType.Int16},
@@ -116,7 +117,6 @@ namespace EdmxToPOCOGen
                     {SqlDbType.Time,DbType.Time},
                     {SqlDbType.TinyInt,DbType.Byte},
                     {SqlDbType.UniqueIdentifier,DbType.Guid},
-                    {SqlDbType.VarChar,DbType.String},
                     {SqlDbType.Xml,DbType.Xml}
               };
 

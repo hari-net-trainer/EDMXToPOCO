@@ -153,14 +153,19 @@ namespace EdmxToPOCOGen
                 var paramType = "object";
                 this.Nullable = false;
 
-                if (SqlTypeEnum == SqlDbType.BigInt || SqlTypeEnum == SqlDbType.Int)
+                if (SqlTypeEnum == SqlDbType.BigInt || SqlTypeEnum == SqlDbType.Int || SqlTypeEnum == SqlDbType.Real || SqlTypeEnum == SqlDbType.Decimal)
                 {
                     this.Nullable = true;
                     paramType = string.Format("Nullable<{0}>", ClrType);
                 }
-                else if (SqlTypeEnum == SqlDbType.VarChar)
+                else if (SqlTypeEnum == SqlDbType.VarChar || SqlTypeEnum == SqlDbType.Xml)
                 {
                     paramType = "string";
+                }
+                else if (SqlTypeEnum == SqlDbType.DateTime)
+                {
+                    this.Nullable = true;
+                    paramType = string.Format("Nullable<{0}>", ClrType);
                 }
 
                 return string.Format("{0} {1}", paramType, FunctionParamName);

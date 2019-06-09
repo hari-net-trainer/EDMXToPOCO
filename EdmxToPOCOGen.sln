@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIwithHelp", "APITest\W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "APITest\Repositories\Repositories.csproj", "{61DDE809-0A7B-47F5-BD9E-E3F85FB9605F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C5E2CBBC-584D-4D48-AEC7-B4AA22E65A28}"
+	ProjectSection(SolutionItems) = preProject
+		Output\CentralDigitalCondoEntities.Context.cs = Output\CentralDigitalCondoEntities.Context.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
